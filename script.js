@@ -1,18 +1,45 @@
-document.getElementById('macroForm').addEventListener('submit', function (e) {
+const form = document.getElementById('macroForm');
+const logList = document.getElementById('logList');
+const totalCaloriesDisplay = document.getElementById('totalCalories');
+
+function getTodayKey() {
+  const today = new Date().toISOString().split('T')[0];
+  return `log-${today}`;
+}
+
+function loadLog() {
+  const key = getTodayKey();
+  const entries = JSON.parse(localStorage.getItem(key)) || [];
+  logList.innerHTML = '';
+  let totalCalories = 0;
+
+  entries.forEach(entry => {
+    totalCalories += entry.calories;
+    const li = document.createElement('li');
+    li.textContent = `🍽️ ${entry.calories} cal, ${entry.protein}g protein, ${entry.addedSugar}g added sugar`;
+    logList.appendChild(li);
+  });
+
+  totalCaloriesDisplay.textContent = `Total Calories: ${totalCalories}`;
+}
+
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const calories = +document.getElementById('calories').value;
-  const protein = +document.getElementById('protein').value;
-  const addedSugar = +document.getElementById('addedSugar').value;
-  const naturalSugar = +document.getElementById('naturalSugar').value;
+  const entry = {
+    calories: +document.getElementById('calories').value,
+    protein: +document.getElementById('protein').value,
+    addedSugar: +document.getElementById('addedSugar').value,
+    naturalSugar: +document.getElementById('naturalSugar').value
+  };
 
-  let feedback = '';
+  const key = getTodayKey();
+  const entries = JSON.parse(localStorage.getItem(key)) || [];
+  entries.push(entry);
+  localStorage.setItem(key, JSON.stringify(entries));
 
-  if (addedSugar > 10) feedback += '⚠️ Too much added sugar!\n';
-  if (naturalSugar > 20) feedback += '⚠️ Too much natural sugar!\n';
-  if (protein < 120) feedback += '⚠️ Protein too low!\n';
-  if (calories < 1800) feedback += '⚠️ Calories may be too low for training!\n';
-
-  document.getElementById('output').innerText =
-    feedback || '✅ All macros within target!';
+  form.reset();
+  loadLog();
 });
+
+loadLog();
