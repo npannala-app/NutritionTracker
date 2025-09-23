@@ -7,21 +7,26 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 </head>
 <body>
-  <h1>Macro Tracker ✅</h1>
-  <p style="color: green;">This version was updated at <strong>10:09 PM PDT</strong> to trigger GitHub Pages.</p>
+  <div class="container">
+    <h1>🍏 Macro Tracker</h1>
+    <form id="macroForm">
+      <input type="number" id="calories" placeholder="Calories" required />
+      <input type="number" id="protein" placeholder="Protein (g)" required />
+      <input type="number" id="addedSugar" placeholder="Added Sugar (g)" required />
+      <input type="number" id="naturalSugar" placeholder="Natural Sugar (g)" required />
+      <button type="submit">Log Entry</button>
+    </form>
 
-  <form id="macroForm">
-    <label>Calories: <input type="number" id="calories" /></label><br />
-    <label>Protein (g): <input type="number" id="protein" /></label><br />
-    <label>Added Sugar (g): <input type="number" id="addedSugar" /></label><br />
-    <label>Natural Sugar (g): <input type="number" id="naturalSugar" /></label><br />
-    <button type="submit">Track</button>
-  </form>
+    <div id="summary">
+      <h2>📊 Today's Summary</h2>
+      <p id="totalCalories">Total Calories: 0</p>
+      <ul id="logList"></ul>
+    </div>
+  </div>
 
-  <div id="output"></div>
   <script src="script.js"></script>
 </body>
 </html>
