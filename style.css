@@ -57,15 +57,9 @@ button {
   text-align: center;
 }
 
-.circle {
+.circle svg {
   width: 100px;
   height: 100px;
-  margin: auto;
-  position: relative;
-}
-
-.circle svg {
-  transform: rotate(-90deg);
 }
 
 .circle text {
