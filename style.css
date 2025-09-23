@@ -1,35 +1,60 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
+  margin: 0;
   padding: 20px;
-  background-color: #f4f4f4;
 }
 
-h1 {
-  color: #333;
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #007aff;
 }
 
 form {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 input {
-  margin: 5px 0;
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px;
   background-color: #007aff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
 }
 
-#output {
-  white-space: pre-wrap;
-  font-weight: bold;
-  color: #d00;
+#summary {
+  margin-top: 30px;
+}
+
+#logList {
+  list-style: none;
+  padding: 0;
+}
+
+#logList li {
+  background: #f1f1f1;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 10px;
 }
