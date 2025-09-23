@@ -15,15 +15,33 @@
     <form id="macroForm">
       <input type="number" id="calories" placeholder="Calories" required />
       <input type="number" id="protein" placeholder="Protein (g)" required />
-      <input type="number" id="addedSugar" placeholder="Added Sugar (g)" required />
-      <input type="number" id="naturalSugar" placeholder="Natural Sugar (g)" required />
+      <input type="number" id="sugar" placeholder="Sugar (g)" required />
+      <input type="number" id="water" placeholder="Water (oz)" required />
       <button type="submit">Log Entry</button>
     </form>
 
-    <div id="summary">
-      <h2>📊 Today's Summary</h2>
-      <p id="totalCalories">Total Calories: 0</p>
-      <ul id="logList"></ul>
+    <div class="progress-section">
+      <div class="metric">
+        <h2>Calories</h2>
+        <div class="circle" data-goal="1600" id="caloriesCircle"></div>
+      </div>
+      <div class="metric">
+        <h2>Protein</h2>
+        <div class="circle" data-goal="150" id="proteinCircle"></div>
+      </div>
+      <div class="metric">
+        <h2>Sugar</h2>
+        <div class="circle" data-goal="10" id="sugarCircle"></div>
+      </div>
+      <div class="metric">
+        <h2>Water</h2>
+        <div class="circle" data-goal="102" id="waterCircle"></div>
+      </div>
+    </div>
+
+    <div id="logList">
+      <h2>📅 Today's Entries</h2>
+      <ul></ul>
     </div>
   </div>
 
