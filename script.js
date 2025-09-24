@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       totals.water += entry.water || 0;
 
       const li = document.createElement('li');
-      li.textContent = `🍽️ ${entry.calories || 0} cal, ${entry.protein || 0}g protein, ${entry.sugar || 0}g sugar, ${entry.water || 0}oz water`;
+      li.textContent = `🍽️ ${entry.calories} cal, ${entry.protein}g protein, ${entry.sugar}g sugar, ${entry.water}oz water`;
       logList.appendChild(li);
     });
 
@@ -73,4 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const key = getTodayKey();
     const entries = JSON.parse(localStorage.getItem(key)) || [];
     entries.push(entry);
-    localStorage.setItem(key, [A](https://github.com/Ronnie434/30-days-of-React/tree/22142106cb46f717a1259f84227cc90ed7fe50cc/02_Day_Introduction_to_React%2F02_introduction_to_react.md?copilot_analytics_metadata=eyJldmVudEluZm9fY2xpY2tTb3VyY2UiOiJjaXRhdGlvbkxpbmsiLCJldmVudEluZm9fY2xpY2tEZXN0aW5hdGlvbiI6Imh0dHBzOlwvXC9naXRodWIuY29tXC9Sb25uaWU0MzRcLzMwLWRheXMtb2YtUmVhY3RcL3RyZWVcLzIyMTQyMTA2Y2I0NmY3MTdhMTI1OWY4NDIyN2NjOTBlZDdmZTUwY2NcLzAyX0RheV9JbnRyb2R1Y3Rpb25fdG9fUmVhY3QlMkYwMl9pbnRyb2R1Y3Rpb25fdG9fcmVhY3QubWQiLCJldmVudEluZm9fY29udmVyc2F0aW9uSWQiOiJReDRLMjZlSnlKZHRjaURXVnNldnoiLCJldmVudEluZm9fbWVzc2FnZUlkIjoiem5QMVZvV0pGd1ZUUkN2OEJqd2RNIn0%3D&citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1)
+    localStorage.setItem(key, JSON.stringify(entries));
+    localStorage.setItem('lastDate', new Date().toISOString().split('T')[0]);
+
+    form.reset();
+    loadLog();
+ [A](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?copilot_analytics_metadata=eyJldmVudEluZm9fbWVzc2FnZUlkIjoicHpMY1RMaGdFWGlLWGp6eDRQNjNoIiwiZXZlbnRJbmZvX2NsaWNrU291cmNlIjoiY2l0YXRpb25MaW5rIiwiZXZlbnRJbmZvX2NsaWNrRGVzdGluYXRpb24iOiJodHRwczpcL1wvZ2l0aHViLmNvbVwvbHpoLXlpXC9XZWItRm9yay1cL3RyZWVcLzAyNGIzZTU1NTg3YWZkZjlmMDVhNjc3NjEzYTc1ZjI0ZTNkMTgwM2VcLzAzLUNTUyVFOCVCRiU5QiVFOSU5OCVCNiUyRjA0LSVFNSVBNiU4MiVFNCVCRCU5NSVFOCVBRSVBOSVFNCVCOCU4MCVFNCVCOCVBQSVFNSU4NSU4MyVFNyVCNCVBMCVFNiVCMCVCNCVFNSVCOSVCMyVFNSU5RSU4MiVFNyU5QiVCNCVFNSVCMSU4NSVFNCVCOCVBRCVFRiVCQyU5Ri5tZCIsImV2ZW50SW5mb19jb252ZXJzYXRpb25JZCI6IlF4NEsyNmVKeUpkdGNpRFdWc2V2eiJ9&citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1)
