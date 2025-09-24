@@ -14,6 +14,9 @@ body {
   border-radius: 24px;
   backdrop-filter: blur(12px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.fadeIn {
   animation: fadeIn 0.6s ease-out;
 }
 
@@ -28,6 +31,9 @@ body {
   text-align: center;
   margin-bottom: 30px;
   color: #0a84ff;
+}
+
+.bounceIn {
   animation: bounceIn 1s ease-out;
 }
 
@@ -83,6 +89,9 @@ button:active {
 .circle svg {
   width: 100px;
   height: 100px;
+}
+
+.circle svg circle:last-child {
   transition: stroke-dashoffset 0.6s ease;
 }
 
@@ -107,6 +116,9 @@ button:active {
   margin-bottom: 12px;
   padding: 12px;
   border-radius: 14px;
+}
+
+.slideUp {
   animation: slideUp 0.4s ease-out;
 }
 
