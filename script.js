@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function loadLog() {
-    console.log("loadLog triggered"); // Debug line
     resetIfNewDay();
     const key = getTodayKey();
     const entries = JSON.parse(localStorage.getItem(key)) || [];
@@ -38,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       totals.water += entry.water || 0;
 
       const li = document.createElement('li');
+      li.classList.add('slideUp');
       li.textContent = `🍽️ ${entry.calories} cal, ${entry.protein}g protein, ${entry.sugar}g sugar, ${entry.water}oz water`;
       logList.appendChild(li);
     });
@@ -49,10 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const metric in goals) {
       const percent = Math.min((totals[metric] || 0) / goals[metric], 1);
       const circle = document.getElementById(`${metric}Circle`);
-      if (!circle) {
-        console.error(`Missing circle element for ${metric}`);
-        continue;
-      }
+      if (!circle) continue;
       circle.innerHTML = `
         <svg viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="40" stroke="#3a3a3c" stroke-width="10" fill="none" />
@@ -85,5 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loadLog();
   });
 
-  loadLog();
-});
+  loadLog [A](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?copilot_analytics_metadata=eyJldmVudEluZm9fY2xpY2tTb3VyY2UiOiJjaXRhdGlvbkxpbmsiLCJldmVudEluZm9fY29udmVyc2F0aW9uSWQiOiJReDRLMjZlSnlKZHRjaURXVnNldnoiLCJldmVudEluZm9fbWVzc2FnZUlkIjoicUI5dlg2OUZlbkRTQzZrNnZxckt1IiwiZXZlbnRJbmZvX2NsaWNrRGVzdGluYXRpb24iOiJodHRwczpcL1wvZ2l0aHViLmNvbVwvbHpoLXlpXC9XZWItRm9yay1cL3RyZWVcLzAyNGIzZTU1NTg3YWZkZjlmMDVhNjc3NjEzYTc1ZjI0ZTNkMTgwM2VcLzAzLUNTUyVFOCVCRiU5QiVFOSU5OCVCNiUyRjA0LSVFNSVBNiU4MiVFNCVCRCU5NSVFOCVBRSVBOSVFNCVCOCU4MCVFNCVCOCVBQSVFNSU4NSU4MyVFNyVCNCVBMCVFNiVCMCVCNCVFNSVCOSVCMyVFNSU5RSU4MiVFNyU5QiVCNCVFNSVCMSU4NSVFNCVCOCVBRCVFRiVCQyU5Ri5tZCJ9&citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1)
