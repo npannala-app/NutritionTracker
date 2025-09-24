@@ -23,8 +23,8 @@ body {
 }
 
 .welcome-banner {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 30px;
   color: #0a84ff;
@@ -62,11 +62,11 @@ button {
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #0077e6;
+button:active {
+  transform: scale(0.97);
 }
 
 .progress-section {
