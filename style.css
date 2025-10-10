@@ -1,19 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Rounded:wght@400;600&display=swap');
+
+:root {
+  --bg: #0c0c0f;
+  --glass: rgba(255, 255, 255, 0.08);
+  --blur: 20px;
+  --red: #ff4f70;
+  --green: #4fff9a;
+  --yellow: #ffd84f;
+  --blue: #44d9ff;
+}
+
 body {
-  font-family: Poppins, sans-serif;
-  background: #0d0d0d;
+  font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
   color: white;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-x: hidden;
+}
+
+.glass-card {
+  backdrop-filter: blur(var(--blur));
+  background: var(--glass);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.05);
+  padding: 20px 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.glass-card input {
+  background: rgba(255,255,255,0.05);
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  color: white;
+  font-size: 15px;
+  width: 120px;
+  text-align: center;
+  outline: none;
+  transition: 0.2s;
+}
+.glass-card input:focus {
+  background: rgba(255,255,255,0.12);
+}
+
+.glass-card button {
+  background: linear-gradient(135deg, #007aff, #00c6ff);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.glass-card button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #00c6ff99;
 }
 
 .macros {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-  margin-top: 30px;
-  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .circle svg {
@@ -21,50 +77,15 @@ body {
   height: 120px;
 }
 
-circle {
-  filter: drop-shadow(0 0 4px #00aaff);
-}
-
 circle.glow {
-  animation: pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse {
-  from { filter: drop-shadow(0 0 6px #00aaff); }
-  to { filter: drop-shadow(0 0 18px #00aaff); }
+  filter: drop-shadow(0 0 8px currentColor);
+  transition: stroke-dashoffset 0.8s ease;
 }
 
 .fraction {
   text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 5px;
-  transition: transform 0.4s ease, color 0.4s ease;
-}
-
-.fraction.animate {
-  transform: scale(1.2);
-  color: #00aaff;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-li {
-  margin: 6px 0;
-  background: rgba(255,255,255,0.1);
-  padding: 8px 12px;
-  border-radius: 8px;
-}
-
-.slideUp {
-  animation: slideUp 0.4s ease;
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 8px;
+  opacity: 0.85;
+  transition: tra
