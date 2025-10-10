@@ -44,6 +44,25 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCircles(totals);
   }
 
+  function animateFraction(fractionElem, oldValue, newValue, goal) {
+    let start = null;
+    const duration = 800;
+    const diff = newValue - oldValue;
+
+    fractionElem.classList.add('animate');
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const current = oldValue + diff * progress;
+      fractionElem.textContent = `${Math.round(current)} / ${goal}`;
+      if (progress < 1) requestAnimationFrame(step);
+      else setTimeout(() => fractionElem.classList.remove('animate'), 200);
+    }
+
+    requestAnimationFrame(step);
+  }
+
   function updateCircles(totals) {
     for (const metric in goals) {
       const percent = Math.min((totals[metric] || 0) / goals[metric], 1);
@@ -52,19 +71,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!circle || !fraction) continue;
 
-      // Draw animated progress circle
+      // Neon animated glow
       circle.innerHTML = `
         <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" stroke="#3a3a3c" stroke-width="10" fill="none" />
-          <circle cx="50" cy="50" r="40" stroke="#0a84ff" stroke-width="10" fill="none"
+          <circle cx="50" cy="50" r="40" stroke="#222" stroke-width="10" fill="none" />
+          <circle class="glow" cx="50" cy="50" r="40" stroke="#00aaff" stroke-width="10" fill="none"
             stroke-dasharray="251" stroke-dashoffset="${251 - percent * 251}"
             style="transition: stroke-dashoffset 0.8s ease" />
-          <text x="50" y="55">${Math.round(percent * 100)}%</text>
+          <text x="50" y="55" text-anchor="middle" fill="white" font-size="18">${Math.round(percent * 100)}%</text>
         </svg>
       `;
 
-      // Update fraction (current / goal)
-      fraction.textContent = `${Math.round(totals[metric])} / ${goals[metric]}`;
+      const currentValue = parseFloat(fraction.textContent.split('/')[0]) || 0;
+      animateFraction(fraction, currentValue, totals[metric], goals[metric]);
     }
   }
 
