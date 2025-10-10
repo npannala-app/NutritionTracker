@@ -16,14 +16,8 @@ body {
   box-shadow: 0 12px 32px rgba(0,0,0,0.4);
 }
 
-.fadeIn {
-  animation: fadeIn 0.6s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.fadeIn { animation: fadeIn 0.6s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .welcome-banner {
   font-size: 32px;
@@ -33,10 +27,7 @@ body {
   color: #0a84ff;
 }
 
-.bounceIn {
-  animation: bounceIn 1s ease-out;
-}
-
+.bounceIn { animation: bounceIn 1s ease-out; }
 @keyframes bounceIn {
   0% { transform: scale(0.9); opacity: 0; }
   60% { transform: scale(1.05); opacity: 1; }
@@ -71,9 +62,7 @@ button {
   transition: transform 0.2s ease;
 }
 
-button:active {
-  transform: scale(0.97);
-}
+button:active { transform: scale(0.97); }
 
 .progress-section {
   display: grid;
@@ -92,7 +81,7 @@ button:active {
 }
 
 .circle svg circle:last-child {
-  transition: stroke-dashoffset 0.6s ease;
+  transition: stroke-dashoffset 0.8s ease;
 }
 
 .circle text {
@@ -100,6 +89,13 @@ button:active {
   font-size: 14px;
   text-anchor: middle;
   dominant-baseline: middle;
+}
+
+.fraction {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #a1a1a6;
+  animation: fadeIn 0.5s ease-in;
 }
 
 #logList {
@@ -118,29 +114,8 @@ button:active {
   border-radius: 14px;
 }
 
-.slideUp {
-  animation: slideUp 0.4s ease-out;
-}
-
+.slideUp { animation: slideUp 0.4s ease-out; }
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-.macro-item {
-  text-align: center;
-  margin: 15px;
-  display: inline-block;
-}
-
-.macro-label {
-  font-weight: bold;
-  margin-top: 5px;
-  font-size: 1.1em;
-}
-
-.macro-fraction {
-  margin-top: 3px;
-  font-size: 0.9em;
-  color: #444;
-  transition: all 0.3s ease-in-out;
 }
