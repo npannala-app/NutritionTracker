@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Macro Tracker</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icon.png" type="image/png" />
 </head>
 <body>
   <div class="container fadeIn">
@@ -19,10 +20,26 @@
     </form>
 
     <div class="progress-section">
-      <div class="metric"><h2>Calories</h2><div class="circle" id="caloriesCircle"></div></div>
-      <div class="metric"><h2>Protein</h2><div class="circle" id="proteinCircle"></div></div>
-      <div class="metric"><h2>Sugar</h2><div class="circle" id="sugarCircle"></div></div>
-      <div class="metric"><h2>Water</h2><div class="circle" id="waterCircle"></div></div>
+      <div class="metric">
+        <h2>Calories</h2>
+        <div class="circle" id="caloriesCircle"></div>
+        <div class="fraction" id="caloriesFraction"></div>
+      </div>
+      <div class="metric">
+        <h2>Protein</h2>
+        <div class="circle" id="proteinCircle"></div>
+        <div class="fraction" id="proteinFraction"></div>
+      </div>
+      <div class="metric">
+        <h2>Sugar</h2>
+        <div class="circle" id="sugarCircle"></div>
+        <div class="fraction" id="sugarFraction"></div>
+      </div>
+      <div class="metric">
+        <h2>Water</h2>
+        <div class="circle" id="waterCircle"></div>
+        <div class="fraction" id="waterFraction"></div>
+      </div>
     </div>
 
     <div id="logList">
