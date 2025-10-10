@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Macro Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="icon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container fadeIn">
-    <div class="welcome-banner bounceIn">👋 Welcome, Naitik</div>
+  <form id="macroForm">
+    <input id="calories" type="number" placeholder="Calories">
+    <input id="protein" type="number" placeholder="Protein (g)">
+    <input id="sugar" type="number" placeholder="Sugar (g)">
+    <input id="water" type="number" placeholder="Water (oz)">
+    <button type="submit">Add Entry</button>
+  </form>
 
-    <form id="macroForm">
-      <input type="number" id="calories" placeholder="Calories" />
-      <input type="number" id="protein" placeholder="Protein (g)" />
-      <input type="number" id="sugar" placeholder="Sugar (g)" />
-      <input type="number" id="water" placeholder="Water (oz)" />
-      <button type="submit">Log Entry</button>
-    </form>
-
-    <div class="progress-section">
-      <div class="metric">
-        <h2>Calories</h2>
-        <div class="circle" id="caloriesCircle"></div>
-        <div class="fraction" id="caloriesFraction"></div>
-      </div>
-      <div class="metric">
-        <h2>Protein</h2>
-        <div class="circle" id="proteinCircle"></div>
-        <div class="fraction" id="proteinFraction"></div>
-      </div>
-      <div class="metric">
-        <h2>Sugar</h2>
-        <div class="circle" id="sugarCircle"></div>
-        <div class="fraction" id="sugarFraction"></div>
-      </div>
-      <div class="metric">
-        <h2>Water</h2>
-        <div class="circle" id="waterCircle"></div>
-        <div class="fraction" id="waterFraction"></div>
-      </div>
+  <div class="macros">
+    <div class="macro">
+      <div id="caloriesCircle" class="circle"></div>
+      <div id="caloriesFraction" class="fraction"></div>
     </div>
-
-    <div id="logList">
-      <h2>📅 Today's Entries</h2>
-      <ul></ul>
+    <div class="macro">
+      <div id="proteinCircle" class="circle"></div>
+      <div id="proteinFraction" class="fraction"></div>
+    </div>
+    <div class="macro">
+      <div id="sugarCircle" class="circle"></div>
+      <div id="sugarFraction" class="fraction"></div>
+    </div>
+    <div class="macro">
+      <div id="waterCircle" class="circle"></div>
+      <div id="waterFraction" class="fraction"></div>
     </div>
   </div>
 
+  <div id="logList"><ul></ul></div>
   <script src="script.js"></script>
 </body>
 </html>
