@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!circle || !fraction) continue;
 
-      // Update circle animation
+      // Draw animated progress circle
       circle.innerHTML = `
         <svg viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="40" stroke="#3a3a3c" stroke-width="10" fill="none" />
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </svg>
       `;
 
-      // Update fraction display
+      // Update fraction (current / goal)
       fraction.textContent = `${Math.round(totals[metric])} / ${goals[metric]}`;
     }
   }
