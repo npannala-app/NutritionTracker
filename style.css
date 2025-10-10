@@ -1,91 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=SF+Pro+Rounded:wght@400;600&display=swap');
-
-:root {
-  --bg: #0c0c0f;
-  --glass: rgba(255, 255, 255, 0.08);
-  --blur: 20px;
-  --red: #ff4f70;
-  --green: #4fff9a;
-  --yellow: #ffd84f;
-  --blue: #44d9ff;
-}
-
 body {
-  font-family: 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: white;
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-  gap: 2rem;
-  overflow-x: hidden;
+  align-items: flex-start;
+  padding-top: 40px;
 }
 
-.glass-card {
-  backdrop-filter: blur(var(--blur));
-  background: var(--glass);
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.05);
-  padding: 20px 30px;
+.tracker-container {
+  width: 420px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.glass-card input {
-  background: rgba(255,255,255,0.05);
-  border: none;
-  border-radius: 12px;
-  padding: 10px;
-  color: white;
-  font-size: 15px;
-  width: 120px;
-  text-align: center;
-  outline: none;
-  transition: 0.2s;
-}
-.glass-card input:focus {
-  background: rgba(255,255,255,0.12);
-}
-
-.glass-card button {
-  background: linear-gradient(135deg, #007aff, #00c6ff);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  padding: 10px 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.glass-card button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px #00c6ff99;
-}
-
-.macros {
+.input-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 1rem;
+  gap: 8px;
+  justify-content: space-between;
 }
 
-.circle svg {
-  width: 120px;
-  height: 120px;
+.input-container input {
+  flex: 1 1 48%;
+  background: #1e1e1e;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
 }
 
-circle.glow {
-  filter: drop-shadow(0 0 8px currentColor);
-  transition: stroke-dashoffset 0.8s ease;
+#addEntry {
+  background: #2b6df6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+#addEntry:hover {
+  background: #1e56d8;
+}
+
+.circles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+canvas {
+  width: 100px;
+  height: 100px;
+}
+
+.circle-label {
+  margin-top: 10px;
+  font-weight: 600;
 }
 
 .fraction {
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-  margin-top: 8px;
-  opacity: 0.85;
-  transition: tra
+  margin-top: 4px;
+  font-size: 0.9em;
+  color: #bbb;
+  transition: transform 0.5s ease;
+}
+
+.log-container {
+  background: #1b1b1b;
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+#logList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#logList li {
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #d3d3d3;
+}
