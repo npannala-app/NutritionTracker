@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Macro Tracker</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <form id="macroForm">
-    <input id="calories" type="number" placeholder="Calories">
-    <input id="protein" type="number" placeholder="Protein (g)">
-    <input id="sugar" type="number" placeholder="Sugar (g)">
-    <input id="water" type="number" placeholder="Water (oz)">
-    <button type="submit">Add Entry</button>
-  </form>
+  <main>
+    <form id="macroForm" class="glass-card">
+      <input id="calories" type="number" placeholder="Calories" />
+      <input id="protein" type="number" placeholder="Protein (g)" />
+      <input id="sugar" type="number" placeholder="Sugar (g)" />
+      <input id="water" type="number" placeholder="Water (oz)" />
+      <button type="submit">Add Entry</button>
+    </form>
 
-  <div class="macros">
-    <div class="macro">
-      <div id="caloriesCircle" class="circle"></div>
-      <div id="caloriesFraction" class="fraction"></div>
-    </div>
-    <div class="macro">
-      <div id="proteinCircle" class="circle"></div>
-      <div id="proteinFraction" class="fraction"></div>
-    </div>
-    <div class="macro">
-      <div id="sugarCircle" class="circle"></div>
-      <div id="sugarFraction" class="fraction"></div>
-    </div>
-    <div class="macro">
-      <div id="waterCircle" class="circle"></div>
-      <div id="waterFraction" class="fraction"></div>
-    </div>
-  </div>
+    <section class="macros">
+      <div class="macro">
+        <div id="caloriesCircle" class="circle red"></div>
+        <div id="caloriesFraction" class="fraction"></div>
+      </div>
+      <div class="macro">
+        <div id="proteinCircle" class="circle green"></div>
+        <div id="proteinFraction" class="fraction"></div>
+      </div>
+      <div class="macro">
+        <div id="sugarCircle" class="circle yellow"></div>
+        <div id="sugarFraction" class="fraction"></div>
+      </div>
+      <div class="macro">
+        <div id="waterCircle" class="circle blue"></div>
+        <div id="waterFraction" class="fraction"></div>
+      </div>
+    </section>
 
-  <div id="logList"><ul></ul></div>
+    <div id="logList" class="glass-card"><ul></ul></div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
