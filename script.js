@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     water: 102
   };
 
+  const colors = {
+    calories: '#ff4f70',
+    protein: '#4fff9a',
+    sugar: '#ffd84f',
+    water: '#44d9ff'
+  };
+
   function getTodayKey() {
     return `log-${new Date().toISOString().split('T')[0]}`;
   }
@@ -30,14 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const totals = { calories: 0, protein: 0, sugar: 0, water: 0 };
 
     entries.forEach(entry => {
-      totals.calories += entry.calories || 0;
-      totals.protein += entry.protein || 0;
-      totals.sugar += entry.sugar || 0;
-      totals.water += entry.water || 0;
-
+      for (let k in totals) totals[k] += entry[k] || 0;
       const li = document.createElement('li');
-      li.classList.add('slideUp');
-      li.textContent = `🍽️ ${entry.calories} cal, ${entry.protein}g protein, ${entry.sugar}g sugar, ${entry.water}oz water`;
+      li.textContent = `🍎 ${entry.calories} cal, ${entry.protein}g protein, ${entry.sugar}g sugar, ${entry.water}oz water`;
       logList.appendChild(li);
     });
 
@@ -66,18 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCircles(totals) {
     for (const metric in goals) {
       const percent = Math.min((totals[metric] || 0) / goals[metric], 1);
-      const circle = document.getElementById(`${metric}Circle`);
+      const circleDiv = document.getElementById(`${metric}Circle`);
       const fraction = document.getElementById(`${metric}Fraction`);
+      const color = colors[metric];
 
-      if (!circle || !fraction) continue;
+      if (!circleDiv || !fraction) continue;
 
-      // Neon animated glow
-      circle.innerHTML = `
+      circleDiv.innerHTML = `
         <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" stroke="#222" stroke-width="10" fill="none" />
-          <circle class="glow" cx="50" cy="50" r="40" stroke="#00aaff" stroke-width="10" fill="none"
-            stroke-dasharray="251" stroke-dashoffset="${251 - percent * 251}"
-            style="transition: stroke-dashoffset 0.8s ease" />
+          <circle cx="50" cy="50" r="40" stroke="#2b2b2b" stroke-width="10" fill="none" />
+          <circle class="glow" cx="50" cy="50" r="40" stroke="${color}" stroke-width="10" fill="none"
+            stroke-dasharray="251" stroke-dashoffset="${251 - percent * 251}" />
           <text x="50" y="55" text-anchor="middle" fill="white" font-size="18">${Math.round(percent * 100)}%</text>
         </svg>
       `;
@@ -87,15 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
-
     const entry = {
       calories: parseFloat(document.getElementById('calories').value) || 0,
       protein: parseFloat(document.getElementById('protein').value) || 0,
       sugar: parseFloat(document.getElementById('sugar').value) || 0,
-      water: parseFloat(document.getElementById('water').value) || 0,
-      timestamp: new Date().toISOString()
+      water: parseFloat(document.getElementById('water').value) || 0
     };
 
     const key = getTodayKey();
@@ -103,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.push(entry);
     localStorage.setItem(key, JSON.stringify(entries));
     localStorage.setItem('lastDate', new Date().toISOString().split('T')[0]);
-
     form.reset();
     loadLog();
   });
