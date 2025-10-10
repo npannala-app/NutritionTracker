@@ -126,3 +126,17 @@ button:active {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.macro-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.macro-label {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.macro-fraction {
+  color: #555;
+  font-size: 0.9em;
+}
