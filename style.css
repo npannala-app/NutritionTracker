@@ -128,15 +128,19 @@ button:active {
 }
 .macro-item {
   text-align: center;
-  margin: 10px;
+  margin: 15px;
+  display: inline-block;
 }
 
 .macro-label {
   font-weight: bold;
   margin-top: 5px;
+  font-size: 1.1em;
 }
 
 .macro-fraction {
-  color: #555;
+  margin-top: 3px;
   font-size: 0.9em;
+  color: #444;
+  transition: all 0.3s ease-in-out;
 }
