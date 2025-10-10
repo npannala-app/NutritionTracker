@@ -7,7 +7,7 @@ const macros = {
 
 const macroContainer = document.getElementById("macro-container");
 
-// Create circles + fraction text
+// Build macro UI (circle + label + fraction)
 Object.entries(macros).forEach(([key, { current, goal }]) => {
   const div = document.createElement("div");
   div.className = "macro-item";
@@ -27,7 +27,6 @@ function drawCircle(id, current, goal, color) {
   const start = -Math.PI / 2;
   const end = start + percentage * 2 * Math.PI;
 
-  // Clear
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // Background circle
@@ -46,15 +45,32 @@ function drawCircle(id, current, goal, color) {
   ctx.stroke();
 }
 
-function updateDisplay() {
+function animateNumber(id, from, to, goal, duration = 500) {
+  const startTime = performance.now();
+  const element = document.getElementById(id);
+
+  function updateFrame(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const currentValue = Math.floor(from + (to - from) * progress);
+    element.textContent = `${currentValue} / ${goal}`;
+    if (progress < 1) requestAnimationFrame(updateFrame);
+  }
+
+  requestAnimationFrame(updateFrame);
+}
+
+function updateDisplay(previous = {}) {
   const colors = { calories: "red", protein: "blue", carbs: "orange", fat: "green" };
 
   Object.entries(macros).forEach(([key, { current, goal }]) => {
     drawCircle(`${key}-circle`, current, goal, colors[key]);
-    document.getElementById(`${key}-fraction`).textContent = `${current} / ${goal}`;
+
+    const oldValue = previous[key]?.current ?? 0;
+    animateNumber(`${key}-fraction`, oldValue, current, goal);
   });
 }
 
+// Handle meal logging
 document.getElementById("log-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const calories = parseInt(document.getElementById("calories").value) || 0;
@@ -62,14 +78,14 @@ document.getElementById("log-form").addEventListener("submit", (e) => {
   const carbs = parseInt(document.getElementById("carbs").value) || 0;
   const fat = parseInt(document.getElementById("fat").value) || 0;
 
+  const prev = JSON.parse(JSON.stringify(macros));
+
   macros.calories.current += calories;
   macros.protein.current += protein;
   macros.carbs.current += carbs;
   macros.fat.current += fat;
 
-  updateDisplay();
-
-  // Clear inputs
+  updateDisplay(prev);
   e.target.reset();
 });
 
