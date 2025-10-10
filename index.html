@@ -3,40 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Macro Tracker</title>
+  <title>Nutrition Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <form id="macroForm" class="glass-card">
-      <input id="calories" type="number" placeholder="Calories" />
-      <input id="protein" type="number" placeholder="Protein (g)" />
-      <input id="sugar" type="number" placeholder="Sugar (g)" />
-      <input id="water" type="number" placeholder="Water (oz)" />
-      <button type="submit">Add Entry</button>
-    </form>
+  <div class="tracker-container">
+    <div class="input-container">
+      <input id="calories" placeholder="Calories" type="number">
+      <input id="protein" placeholder="Protein (g)" type="number">
+      <input id="sugar" placeholder="Sugar (g)" type="number">
+      <input id="water" placeholder="Water (oz)" type="number">
+      <button id="addEntry">Add Entry</button>
+    </div>
 
-    <section class="macros">
-      <div class="macro">
-        <div id="caloriesCircle" class="circle red"></div>
-        <div id="caloriesFraction" class="fraction"></div>
+    <div class="circles-grid">
+      <div class="circle-container" id="calorie-circle">
+        <canvas></canvas>
+        <div class="circle-label">Calories</div>
+        <div class="fraction" id="calorie-fraction"></div>
       </div>
-      <div class="macro">
-        <div id="proteinCircle" class="circle green"></div>
-        <div id="proteinFraction" class="fraction"></div>
+      <div class="circle-container" id="protein-circle">
+        <canvas></canvas>
+        <div class="circle-label">Protein</div>
+        <div class="fraction" id="protein-fraction"></div>
       </div>
-      <div class="macro">
-        <div id="sugarCircle" class="circle yellow"></div>
-        <div id="sugarFraction" class="fraction"></div>
+      <div class="circle-container" id="sugar-circle">
+        <canvas></canvas>
+        <div class="circle-label">Sugar</div>
+        <div class="fraction" id="sugar-fraction"></div>
       </div>
-      <div class="macro">
-        <div id="waterCircle" class="circle blue"></div>
-        <div id="waterFraction" class="fraction"></div>
+      <div class="circle-container" id="water-circle">
+        <canvas></canvas>
+        <div class="circle-label">Water</div>
+        <div class="fraction" id="water-fraction"></div>
       </div>
-    </section>
+    </div>
 
-    <div id="logList" class="glass-card"><ul></ul></div>
-  </main>
+    <div class="log-container">
+      <ul id="logList"></ul>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
