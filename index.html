@@ -8,6 +8,10 @@
 </head>
 <body>
   <div class="tracker-container">
+    <div class="header">
+      <h1>Nutrition Tracker</h1>
+    </div>
+
     <div class="input-container">
       <input id="calories" placeholder="Calories" type="number">
       <input id="protein" placeholder="Protein (g)" type="number">
@@ -18,28 +22,29 @@
 
     <div class="circles-grid">
       <div class="circle-container" id="calorie-circle">
-        <canvas></canvas>
+        <canvas width="150" height="150"></canvas>
         <div class="circle-label">Calories</div>
         <div class="fraction" id="calorie-fraction"></div>
       </div>
       <div class="circle-container" id="protein-circle">
-        <canvas></canvas>
+        <canvas width="150" height="150"></canvas>
         <div class="circle-label">Protein</div>
         <div class="fraction" id="protein-fraction"></div>
       </div>
       <div class="circle-container" id="sugar-circle">
-        <canvas></canvas>
+        <canvas width="150" height="150"></canvas>
         <div class="circle-label">Sugar</div>
         <div class="fraction" id="sugar-fraction"></div>
       </div>
       <div class="circle-container" id="water-circle">
-        <canvas></canvas>
+        <canvas width="150" height="150"></canvas>
         <div class="circle-label">Water</div>
         <div class="fraction" id="water-fraction"></div>
       </div>
     </div>
 
     <div class="log-container">
+      <h2>Log</h2>
       <ul id="logList"></ul>
     </div>
   </div>
