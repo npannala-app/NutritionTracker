@@ -17,28 +17,29 @@ const totals = { calories: 0, protein: 0, sugar: 0, water: 0 };
 function drawCircle(canvas, percent, color) {
   const ctx = canvas.getContext("2d");
   const size = canvas.width;
-  const radius = size / 2 - 8;
+  const radius = size / 2 - 10;
   const center = size / 2;
   ctx.clearRect(0, 0, size, size);
 
   // Background circle
   ctx.beginPath();
   ctx.arc(center, center, radius, 0, 2 * Math.PI);
-  ctx.strokeStyle = "#333";
-  ctx.lineWidth = 10;
+  ctx.strokeStyle = "#2c2c2c";
+  ctx.lineWidth = 12;
   ctx.stroke();
 
   // Progress arc
+  const angle = (Math.min(percent, 100) / 100) * 2 * Math.PI;
   ctx.beginPath();
-  ctx.arc(center, center, radius, -Math.PI / 2, (2 * Math.PI) * (percent / 100) - Math.PI / 2);
+  ctx.arc(center, center, radius, -Math.PI / 2, angle - Math.PI / 2);
   ctx.strokeStyle = color;
-  ctx.lineWidth = 10;
+  ctx.lineWidth = 12;
   ctx.lineCap = "round";
   ctx.stroke();
 
   // Text
   ctx.fillStyle = "white";
-  ctx.font = "bold 18px Inter";
+  ctx.font = "bold 20px Inter";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText(`${Math.min(percent, 100).toFixed(0)}%`, center, center);
@@ -76,5 +77,5 @@ document.getElementById("addEntry").addEventListener("click", () => {
   updateUI();
 });
 
-// Initialize
+// Initialize UI on load
 updateUI();
