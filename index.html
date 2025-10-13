@@ -7,46 +7,48 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="card">
-    <h1>Nutrition Tracker</h1>
+  <div class="app-container">
+    <div class="tracker-card">
+      <h1>Nutrition Tracker</h1>
 
-    <form id="macroForm">
-      <input type="number" id="calories" placeholder="Calories" />
-      <input type="number" id="protein" placeholder="Protein (g)" />
-      <input type="number" id="sugar" placeholder="Sugar (g)" />
-      <input type="number" id="water" placeholder="Water (oz)" />
-      <button type="submit" id="addEntry">Add Entry</button>
-    </form>
+      <form id="macroForm">
+        <input type="number" id="calories" placeholder="Calories" />
+        <input type="number" id="protein" placeholder="Protein (g)" />
+        <input type="number" id="sugar" placeholder="Sugar (g)" />
+        <input type="number" id="water" placeholder="Water (oz)" />
+        <button type="submit" id="addEntry">Add Entry</button>
+      </form>
 
-    <div class="progress-grid">
-      <div class="metric" id="calories-circle">
-        <canvas width="120" height="120"></canvas>
-        <div class="label">Calories</div>
-        <div id="calories-fraction" class="fraction"></div>
+      <div class="progress-grid">
+        <div class="metric" id="calories-circle">
+          <canvas width="120" height="120"></canvas>
+          <div class="label">Calories</div>
+          <div id="calories-fraction" class="fraction"></div>
+        </div>
+
+        <div class="metric" id="protein-circle">
+          <canvas width="120" height="120"></canvas>
+          <div class="label">Protein</div>
+          <div id="protein-fraction" class="fraction"></div>
+        </div>
+
+        <div class="metric" id="sugar-circle">
+          <canvas width="120" height="120"></canvas>
+          <div class="label">Sugar</div>
+          <div id="sugar-fraction" class="fraction"></div>
+        </div>
+
+        <div class="metric" id="water-circle">
+          <canvas width="120" height="120"></canvas>
+          <div class="label">Water</div>
+          <div id="water-fraction" class="fraction"></div>
+        </div>
       </div>
 
-      <div class="metric" id="protein-circle">
-        <canvas width="120" height="120"></canvas>
-        <div class="label">Protein</div>
-        <div id="protein-fraction" class="fraction"></div>
+      <div id="logCard">
+        <h2>Log</h2>
+        <ul id="logList"></ul>
       </div>
-
-      <div class="metric" id="sugar-circle">
-        <canvas width="120" height="120"></canvas>
-        <div class="label">Sugar</div>
-        <div id="sugar-fraction" class="fraction"></div>
-      </div>
-
-      <div class="metric" id="water-circle">
-        <canvas width="120" height="120"></canvas>
-        <div class="label">Water</div>
-        <div id="water-fraction" class="fraction"></div>
-      </div>
-    </div>
-
-    <div id="logCard">
-      <h2>Log</h2>
-      <ul id="logList"></ul>
     </div>
   </div>
 
