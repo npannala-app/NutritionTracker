@@ -1,35 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
   const goals = { calories: 1600, protein: 150, sugar: 50, water: 102 };
-  const colors = { calories: "#ff3b30", protein: "#ffcc00", sugar: "#34c759", water: "#5ac8fa" };
+  const colors = {
+    calories: "#ff6961",
+    protein: "#ffd166",
+    sugar: "#6ec1e4",
+    water: "#80ed99"
+  };
   const totals = { calories: 0, protein: 0, sugar: 0, water: 0 };
 
   function drawCircle(canvas, percent, color) {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     const size = canvas.width;
-    const radius = size / 2 - 10;
+    const radius = size / 2 - 8;
     const center = size / 2;
+
     ctx.clearRect(0, 0, size, size);
 
-    // Background
+    // Background circle
     ctx.beginPath();
     ctx.arc(center, center, radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = "#333";
-    ctx.lineWidth = 14;
+    ctx.strokeStyle = "#3a3a3c";
+    ctx.lineWidth = 10;
     ctx.stroke();
 
-    // Progress
-    const angle = (Math.min(percent, 100) / 100) * 2 * Math.PI;
+    // Progress circle
+    const end = (Math.min(percent, 100) / 100) * 2 * Math.PI;
     ctx.beginPath();
-    ctx.arc(center, center, radius, -Math.PI / 2, angle - Math.PI / 2);
+    ctx.arc(center, center, radius, -Math.PI / 2, end - Math.PI / 2);
     ctx.strokeStyle = color;
-    ctx.lineWidth = 14;
+    ctx.lineWidth = 10;
     ctx.lineCap = "round";
     ctx.stroke();
 
-    // Text
-    ctx.fillStyle = "#fff";
-    ctx.font = "bold 22px Inter";
+    // Percentage text
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 18px 'SF Pro Display'";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText(`${Math.min(percent, 100).toFixed(0)}%`, center, center);
@@ -41,25 +47,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const canvas = document.querySelector(`#${key}-circle canvas`);
       const fraction = document.querySelector(`#${key}-fraction`);
       drawCircle(canvas, percent, colors[key]);
-      if (fraction) fraction.textContent = `${totals[key]} / ${goals[key]}`;
+      if (fraction) {
+        fraction.textContent = `${totals[key]} / ${goals[key]}`;
+      }
     });
   }
 
-  document.getElementById("addEntry").addEventListener("click", () => {
+  document.getElementById("macroForm").addEventListener("submit", e => {
+    e.preventDefault();
     const entry = {
       calories: +document.getElementById("calories").value || 0,
       protein: +document.getElementById("protein").value || 0,
       sugar: +document.getElementById("sugar").value || 0,
       water: +document.getElementById("water").value || 0
     };
-
     Object.keys(totals).forEach(key => totals[key] += entry[key]);
-
     const li = document.createElement("li");
     li.textContent = `${entry.calories} cal, ${entry.protein}g protein, ${entry.sugar}g sugar, ${entry.water}oz water`;
     document.getElementById("logList").appendChild(li);
-
     updateUI();
+    e.target.reset();
   });
 
   updateUI();
