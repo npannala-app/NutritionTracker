@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Focus Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Nutrition Tracker</title>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/51/Ios_icon.svg">
   <style>
-    /* ===== FONT ===== */
     @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 
     * {
@@ -15,32 +14,29 @@
 
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background: linear-gradient(180deg, #1c1c1e, #121213);
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
       color: white;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 30px 0;
     }
 
-    /* ===== CARD ===== */
+    /* Container Card */
     .container {
-      background: rgba(28, 28, 30, 0.9);
+      background: rgba(28, 28, 30, 0.85);
       backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
       border-radius: 32px;
-      padding: 32px 24px 40px;
+      padding: 28px 22px 40px;
       width: 92%;
-      max-width: 390px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      transform: translateY(-10px);
       animation: fadeUp 0.6s ease forwards;
     }
 
@@ -49,20 +45,21 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ===== TITLE ===== */
+    /* Title */
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
+      text-align: center;
     }
 
-    /* ===== INPUTS ===== */
+    /* Inputs vertically stacked */
     .input-group {
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     input {
@@ -75,12 +72,13 @@
       text-align: center;
       transition: background 0.2s ease;
     }
+
     input:focus {
       background: rgba(255, 255, 255, 0.18);
       outline: none;
     }
 
-    /* ===== BUTTON ===== */
+    /* Button */
     button {
       width: 100%;
       padding: 14px;
@@ -93,35 +91,37 @@
       letter-spacing: -0.2px;
       font-family: 'SF Pro Display';
       cursor: pointer;
+      margin-top: 5px;
       box-shadow: 0 4px 14px rgba(0, 122, 255, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     button:active {
       transform: scale(0.97);
       box-shadow: 0 3px 10px rgba(0, 122, 255, 0.2);
     }
 
-    /* ===== CIRCLES ===== */
+    /* Circles layout */
     .circles {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 28px 22px;
       justify-items: center;
       margin-top: 28px;
+      width: 100%;
     }
 
     .circle {
       text-align: center;
-      position: relative;
     }
 
     canvas {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
     }
 
     .circle p {
-      margin: 10px 0 0;
+      margin: 8px 0 0;
       font-weight: 600;
       font-size: 1rem;
     }
@@ -131,136 +131,158 @@
       font-size: 0.85rem;
     }
 
-    /* ===== LOG AREA ===== */
+    /* Log */
     .log {
       background: rgba(255, 255, 255, 0.07);
       border-radius: 18px;
       padding: 16px;
-      margin-top: 28px;
+      margin-top: 32px;
       width: 100%;
       text-align: center;
-      box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
       font-weight: 500;
-      min-height: 50px;
+      min-height: 55px;
+      font-size: 0.95rem;
+      line-height: 1.5;
     }
 
-    /* ===== MOBILE ===== */
     @media (max-width: 480px) {
       .container {
         width: 94%;
-        padding: 26px 18px 32px;
-      }
-
-      .input-group {
-        grid-template-columns: 1fr;
-      }
-
-      canvas {
-        width: 100px;
-        height: 100px;
+        padding: 24px 18px 30px;
       }
 
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
       }
 
-      button {
-        font-size: 15px;
+      canvas {
+        width: 95px;
+        height: 95px;
       }
 
       .circles {
-        grid-template-columns: 1fr 1fr;
         gap: 22px;
+      }
+
+      .log {
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <h1>Focus Tracker</h1>
+    <h1>Nutrition Tracker</h1>
 
     <div class="input-group">
-      <input type="number" id="goal" placeholder="Goal (min)">
-      <input type="number" id="time" placeholder="Time Spent">
+      <input type="number" id="calories" placeholder="Calories">
+      <input type="number" id="protein" placeholder="Protein (g)">
+      <input type="number" id="sugar" placeholder="Sugar (g)">
+      <input type="number" id="water" placeholder="Water (oz)">
     </div>
 
-    <button id="trackBtn">Track Progress</button>
+    <button id="addEntry">Add Entry</button>
 
     <div class="circles">
       <div class="circle">
-        <canvas id="goalCircle"></canvas>
-        <p>Goal</p>
-        <span id="goalValue">0 min</span>
+        <canvas id="caloriesCanvas"></canvas>
+        <p>Calories</p>
+        <span id="caloriesText">0 / 1600</span>
       </div>
       <div class="circle">
-        <canvas id="progressCircle"></canvas>
-        <p>Progress</p>
-        <span id="progressValue">0%</span>
+        <canvas id="proteinCanvas"></canvas>
+        <p>Protein</p>
+        <span id="proteinText">0 / 150</span>
+      </div>
+      <div class="circle">
+        <canvas id="sugarCanvas"></canvas>
+        <p>Sugar</p>
+        <span id="sugarText">0 / 50</span>
+      </div>
+      <div class="circle">
+        <canvas id="waterCanvas"></canvas>
+        <p>Water</p>
+        <span id="waterText">0 / 102</span>
       </div>
     </div>
 
-    <div class="log" id="log">Enter your goal and time to begin.</div>
+    <div class="log" id="log">Add your daily nutrition entries above 👆</div>
   </div>
 
   <script>
-    // ===== Draw Circular Progress =====
+    const goals = {
+      calories: 1600,
+      protein: 150,
+      sugar: 50,
+      water: 102
+    };
+
+    const progress = {
+      calories: 0,
+      protein: 0,
+      sugar: 0,
+      water: 0
+    };
+
+    const colors = {
+      calories: "#FF453A",
+      protein: "#FFD60A",
+      sugar: "#5AC8FA",
+      water: "#30D158"
+    };
+
     function drawCircle(canvas, percent, color) {
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       const radius = canvas.width / 2 - 8;
       const center = canvas.width / 2;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // background circle
       ctx.beginPath();
       ctx.arc(center, center, radius, 0, 2 * Math.PI);
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
       ctx.lineWidth = 8;
       ctx.stroke();
 
-      // progress circle
       ctx.beginPath();
       ctx.arc(center, center, radius, -Math.PI / 2, (2 * Math.PI * percent / 100) - Math.PI / 2);
       ctx.strokeStyle = color;
       ctx.lineWidth = 8;
-      ctx.lineCap = 'round';
+      ctx.lineCap = "round";
       ctx.stroke();
     }
 
-    const goalInput = document.getElementById('goal');
-    const timeInput = document.getElementById('time');
-    const log = document.getElementById('log');
-    const goalCircle = document.getElementById('goalCircle');
-    const progressCircle = document.getElementById('progressCircle');
-    const goalValue = document.getElementById('goalValue');
-    const progressValue = document.getElementById('progressValue');
-    const button = document.getElementById('trackBtn');
+    function updateUI() {
+      Object.keys(progress).forEach(key => {
+        const percent = Math.min((progress[key] / goals[key]) * 100, 100);
+        drawCircle(document.getElementById(`${key}Canvas`), percent, colors[key]);
+        document.getElementById(`${key}Text`).textContent = `${progress[key]} / ${goals[key]}`;
+      });
+    }
 
-    button.addEventListener('click', () => {
-      const goal = parseInt(goalInput.value);
-      const time = parseInt(timeInput.value);
+    document.getElementById("addEntry").addEventListener("click", () => {
+      const entries = ["calories", "protein", "sugar", "water"];
+      let added = false;
 
-      if (isNaN(goal) || isNaN(time) || goal <= 0) {
-        log.textContent = 'Please enter a valid goal and time.';
-        return;
+      entries.forEach(key => {
+        const value = parseInt(document.getElementById(key).value);
+        if (!isNaN(value) && value > 0) {
+          progress[key] += value;
+          added = true;
+        }
+      });
+
+      if (added) {
+        document.getElementById("log").textContent = "✅ Entry added successfully!";
+      } else {
+        document.getElementById("log").textContent = "⚠️ Please enter valid numbers.";
       }
 
-      const progress = Math.min((time / goal) * 100, 100).toFixed(1);
-      log.textContent = progress >= 100
-        ? '🎉 Goal achieved! Take a break.'
-        : `You’re ${progress}% done — keep going!`;
-
-      goalValue.textContent = `${goal} min`;
-      progressValue.textContent = `${progress}%`;
-
-      drawCircle(goalCircle, 100, 'rgba(255,255,255,0.25)');
-      drawCircle(progressCircle, progress, '#0A84FF');
+      updateUI();
     });
 
-    // Initial draw
-    drawCircle(goalCircle, 0, '#fff');
-    drawCircle(progressCircle, 0, '#0A84FF');
+    updateUI();
   </script>
 </body>
 </html>
